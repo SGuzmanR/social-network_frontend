@@ -68,12 +68,12 @@ export const Login = () => {
 
   return (
     <>
-      <div className="">
-        <header className="w-full flex justify-center items-center">
+      <div className="flex flex-col gap-4 justify-between">
+        <header className="w-full flex justify-center items-center flex-col gap-2">
           <div>
             Logo
           </div>
-          <h1 className="font-bold text-2xl">Iniciar Sesión</h1>
+          <h1 className="font-bold text-3xl pb-6">Iniciar Sesión</h1>
         </header>
 
         {/* Formulario de Login*/}
@@ -95,9 +95,9 @@ export const Login = () => {
               ""
             )}
 
-            <form className="" onSubmit={loginUser}>
-              <div className="">
-                <label htmlFor="email">Correo Electrónico</label>
+            <form className="flex flex-col items-start w-full gap-6" onSubmit={loginUser}>
+              <div className="flex flex-col gap-3 items-start justify-center w-full">
+                <label htmlFor="email">Correo Electrónico:</label>
                 <input
                   type="email"
                   id="email"
@@ -106,11 +106,13 @@ export const Login = () => {
                   value={form.email}
                   onChange={changed}
                   autoComplete="username"
+                  className="py-1 px-2 border-b-2 outline-none w-full"
+                  placeholder="savewalterwhite@example.com"
                 />
               </div>
 
-              <div className="form-group">
-                <label htmlFor="password">Contraseña</label>
+              <div className="flex flex-row gap-3 items-center justify-start">
+                <label htmlFor="password">Contraseña:</label>
                 <input
                   type={showPassword ? 'text' : 'password'}
                   id="password"
@@ -119,28 +121,32 @@ export const Login = () => {
                   value={form.password}
                   onChange={changed}
                   autoComplete="current-password"
+                  className="py-1 px-2 border-b-2 outline-none w-full"
+                  placeholder={showPassword ? '3828Piermont' : "••••••••••••"}
                 />
-                <div>
-                  <input type="checkbox" onClick={togglePasswordVisibility} /> 
-                  <label htmlFor="showPassword">Mostrar Contraseña</label>
+                <div className="flex gap-1 items-center justify-center text-center">
+                  <input id="showPassword" type="checkbox" onClick={togglePasswordVisibility} className="size-7" /> 
+                  <label htmlFor="showPassword" className="select-none text-sm">Mostrar Contraseña</label>
                 </div>
               </div>
 
-              <input
-                type="submit"
-                value="Ingresar"
-                className="cursor-pointer"
-              />
+              <div className="flex items-center w-full justify-center">
+                <input
+                  type="submit"
+                  value="Ingresar"
+                  className="cursor-pointer bg-blue-500 px-6 py-2 rounded-xl text-white hover:bg-blue-600"
+                />
+              </div>
             </form>
           </div>
         </div>
 
-        <div>
-          <h1>O deseas mejor
+        <div className="flex w-full justify-center">
+          <span className="text-sm">O deseas mejor 
             <NavLink to='/registro' className="">
-              <span className=""> Registrarte</span>
+              {" "}<span className="hover:underline hover:text-gray-600">Registrarte</span>
             </NavLink>
-          </h1>
+          </span>
         </div>
       </div>
     </>

@@ -10,7 +10,7 @@ export const PublicLayout = () => {
   return (
     <>
       {/* Contenido Principal */}
-      <section className="flex flex-col items-center justify-center h-[90vh]">
+      <section className="flex flex-col items-center justify-center h-screen">
         {!isAuthenticated ? (
           <Outlet />
         ) : (
