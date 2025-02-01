@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { Global } from '../../helpers/Global';
-import avatar from "../../assets/img/default_user.png";
+import avatar from "/img/default_user.png";
 
 export const PublicationDetail = () => {
   const { id } = useParams(); // Obtener el ID de la publicación desde la URL

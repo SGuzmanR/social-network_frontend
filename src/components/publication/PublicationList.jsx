@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Global } from '../../helpers/Global';
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from '../../hooks/useAuth';
-import avatar from '../../assets/img/default_user.png';
+import avatar from '/img/default_user.png';
 import ReactTimeAgo from "react-time-ago";
 import Swal from 'sweetalert2';
 
@@ -79,7 +79,7 @@ export const PublicationList = ({publications, getPublications, page, setPage, m
 
   return (
     <>
-      <div className="content__posts">
+      <div className="flex flex-col justify-center items-center gap-6">
         {publications.map(publication => {
           // Verificar que publication y publication.user no sean undefined
           if (!publication || !publication.user_id) {
@@ -87,47 +87,49 @@ export const PublicationList = ({publications, getPublications, page, setPage, m
           };
 
           return (
-            <article className="posts__post" key={publication._id}
+            <article className="flex shadow p-6 rounded-2xl hover:shadow-md" key={publication._id}
               onClick={() => handleClick(publication._id)} // Maneja el clic en la publicación
               style={{ cursor: 'pointer' }} // Cambiar el cursor a pointer para mostrar que es clicable
             >
-              <div className="post__container">
-                <div className="post__image-user">
-                  <Link to={`/rsocial/perfil/${publication.user_id._id}`} className="post__image-link">
+              <div className="flex flex-col">
+                <div className='flex flex-row gap-2 justify-start items-center'>
+                  <Link to={`/rsocial/perfil/${publication.user_id._id}`} className="">
                     {publication.user_id.image !== "default_user.png" && (
-                      <img src={publication.user_id.image} className="post__user-image" alt="Foto de perfil" />
+                      <img src={publication.user_id.image} className="w-12" alt="Foto de perfil" />
                     )}
                     {publication.user_id.image === "default_user.png" && (
-                      <img src={avatar} className="post__user-image" alt="Foto de perfil" />
+                      <img src={avatar} className="w-12" alt="Foto de perfil" />
                     )}
                   </Link>
-                </div>
 
-                <div className="post__body">
-                  <div className="post__user-info">
-                    <Link to={`/rsocial/perfil/${publication.user_id._id}`} className="user-info__name">
+                  <div className="flex flex-col">
+                    <Link to={`/rsocial/perfil/${publication.user_id._id}`} className="">
                       {publication.user_id.name && publication.user_id.last_name ? (
                         publication.user_id.name + " " + publication.user_id.last_name
                         ) : "Usuario Desconocido"}
                     </Link>
-                    <span className="user-info__divider"> | </span>
-                    <span className="user-info__create-date">
+                    <span className="text-xs">
                       <ReactTimeAgo date={new Date(publication.created_at).getTime()} locale="es-ES" />
                     </span>
                   </div>
+                </div>
 
-                  <h4 className="post__content">{publication.text}</h4>
-
+                <div className="">
                   {publication.file && (
-                    <img src={publication.file} alt="Imagen de publicación" className="post__image-publication" />
+                    <img src={publication.file} alt="Imagen de publicación" className="w-auto" />
                   )}
+                </div>
+                
+                <div>
+                  <span>@{publication.user_id.nick}</span>
+                  <h4 className="font-light text-sm">{publication.text}</h4> 
                 </div>
               </div>
 
               {/* Mostrar botón para eliminar si el usuario es el dueño de la publicación */}
               {auth._id === publication.user_id._id &&
-                <div className="post__buttons">
-                  <button onClick={() => deletePublication(publication._id)} className="post__button">Delete</button>
+                <div className="">
+                  <button onClick={() => deletePublication(publication._id)} className="">Delete</button>
                 </div>
               }
             </article>
@@ -137,8 +139,8 @@ export const PublicationList = ({publications, getPublications, page, setPage, m
 
       {/* Si no estamos en el perfil, mostrar el botón de "Ver más publicaciones" */}
       {!isProfile && more && (
-        <div className="content__container-btn">
-          <button className="content__btn-more-post" onClick={nextPage}>
+        <div className="">
+          <button className="" onClick={nextPage}>
             Ver más publicaciones
           </button>
         </div>
@@ -146,8 +148,8 @@ export const PublicationList = ({publications, getPublications, page, setPage, m
 
       {/* Si estamos en el perfil, mostrar un botón para volver al feed */}
       {isProfile && (
-        <div className="content__container-btn">
-          <button className="content__btn-more-post" onClick={() => navigate('/rsocial/feed')}>
+        <div className="">
+          <button className="" onClick={() => navigate('/rsocial/feed')}>
             Volver al Feed
           </button>
         </div>

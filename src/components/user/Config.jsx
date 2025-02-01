@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { Global } from "../../helpers/Global";
-import avatar from '../../assets/img/default_user.png';
+import avatar from '/img/default_user.png';
 import { SerializeForm } from "../../helpers/SerializeForm";
 import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";

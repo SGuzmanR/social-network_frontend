@@ -2,11 +2,14 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Global } from '../../helpers/Global';
 import { PublicationList } from '../publication/PublicationList';
+import useAuth from '../../hooks/useAuth';
 
 export const Feed = () => {
   const [publications, setPublications] = useState([]);
   const [page, setPage] = useState(1);
   const [more, setMore] = useState(true);
+
+  const { auth } = useAuth();
 
   useEffect(() => {
       getPublications(1, false);
@@ -50,9 +53,9 @@ export const Feed = () => {
 
   return (
     <>
-      <header className="">
-        <h1 className="">Publicaciones</h1>
-        <button className="" onClick={() => getPublications(1, true)}>Mostrar nuevas</button>
+      <header className="flex flex-col justify-center items-center gap-2">
+        <h2 className="font-bold text-3xl">Bienvenido, {auth.name} {auth.last_name}</h2>
+        <button className="mb-6" onClick={() => getPublications(1, true)}>Actualizar Feed</button>
       </header>
 
       <PublicationList
@@ -62,7 +65,7 @@ export const Feed = () => {
         setPage={setPage}
         more={more}
         setMore={setMore}
-        isProfile={false} // No es un perfil, es el feed
+        isProfile={false}
       />
       <br />
     </>

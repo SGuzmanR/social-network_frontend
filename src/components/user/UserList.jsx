@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import avatar from '../../assets/img/default_user.png';
+import avatar from '/img/default_user.png';
 import { Global } from "../../helpers/Global";
 import useAuth from "../../hooks/useAuth";
 
@@ -89,7 +89,7 @@ export const UserList = ({ users, getUsers, following, setFollowing, more, page,
               <div className="">
                 <div className="">
                   <div className="">
-                    {user.image && user.image !== "default_user.png" ? (
+                    {user.image && user.image !== "/default_user.png" ? (
                       <img src={user.image} className="rounded-full w-40" alt="Foto de perfil" />
                     ) : (
                       <img src={avatar} className="rounded-full w-40" alt="Foto de perfil" />

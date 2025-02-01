@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import avatar from "../../../assets/img/default_user.png";
+import avatar from "/img/default_user.png";
 import useAuth from "../../../hooks/useAuth";
-import { Navlinks } from "../../constants";
+import { Navlinks } from "../../../constants";
 
 export const HeaderPriv = () => {
   // Usamos el hook Auth para tener disponible el objeto del usuario identificado.
@@ -56,12 +56,12 @@ export const HeaderPriv = () => {
               <div className="flex flex-col items-end">
                 <li className="">
                   <a href="#" className="">
-                    <span className="">{auth.name} {auth.last_name}</span>
+                    <span className="">@{auth.nick}</span>
                   </a>
                 </li>
 
                 <li className="m-0 p-0">
-                  <NavLink to="/rsocial/logout" className="text-gray-600 hover:underline font-bold text-sm">
+                  <NavLink to="/rsocial/logout" className="text-gray-6 hover:underline font-bold text-sm">
                     Cerrar sesión
                   </NavLink>
                 </li>

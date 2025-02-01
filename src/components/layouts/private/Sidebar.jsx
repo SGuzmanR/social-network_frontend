@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import avatar from "../../../assets/img/default_user.png";
+import avatar from "/img/default_user.png";
 import { Global } from "../../../helpers/Global";
 import useAuth from "../../../hooks/useAuth";
 import { useForm } from '../../../hooks/useForm';
@@ -95,7 +95,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <section>
+    <section className="">
       <button
         type="button"
         className="fixed bg-blue-600 p-2 rounded-full text-white bottom-0 right-0 mr-5 mb-5 hover:shadow-lg hover:bg-blue-800 transition-all cursor-pointer z-10"
